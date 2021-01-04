@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+<xs:element name="Airports">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="Airport" type="AirportDetails" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+    
+<xs:complexType name="AirportDetails">
+    <xs:sequence>
+        <xs:element name="Airport_id" type="Airport_id" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="Airport_Name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="City" type="xs:string" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="State" type="State" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="Country" type="xs:string" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="Latitude" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="Longitude" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+</xs:complexType>
+    
+    <xs:simpleType name="Airport_id">
+        <xs:restriction base="xs:string">
+            <xs:whiteSpace value="collapse"/>
+            <xs:length value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="State">
+        <xs:restriction base="xs:string">
+            <xs:whiteSpace value="collapse"/>
+            <xs:length value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

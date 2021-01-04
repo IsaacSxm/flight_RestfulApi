@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://flightApi.com/airports",
+  "title": "Airports Details",
+  "description": "This schema describes necessary information about an airport",
+  "type": "object",
+  "properties": {
+    "airport_id": {
+      "description": "This is a unique identifier for the name of the airport",
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 3
+    },
+    "airport_name": {
+      "description": "This is the internationally recognized name of the airport",
+      "type": "string"
+    },
+    "city": {
+      "description": "City where the airport is located",
+      "type":"string",
+
+    },
+    "state": {
+      "description": "State where the airport is located",
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 2
+    },
+    "country": {
+      "description": "Country of the airport",
+      "type": "string"
+    },
+    "latitude": {
+      "description": "Geographical coordinate of the airport",
+      "type": "number"
+    },
+    "longitude": {
+      "description": "Geographical coordinate of the airport",
+      "type": "number"
+    }
+  },
+  "required": ["airport_id","airport_name", "city", "state", "country"]
+}

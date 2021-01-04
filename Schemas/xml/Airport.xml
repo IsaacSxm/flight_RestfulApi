@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Airports xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Airport.xsd">
+    <Airport>
+        <Airport_id>ABE</Airport_id>
+        <Airport_Name>Lehigh Valley International Airport</Airport_Name>
+        <City>Allentown</City>
+        <State>PA</State>
+        <Country>USA</Country>
+        <Latitude>40.65236</Latitude>
+        <Longitude>-75.44040</Longitude>
+    </Airport>
+    <Airport>
+        <Airport_id>ABI</Airport_id>
+        <Airport_Name>Abilene Regional Airport</Airport_Name>
+        <City>Abilene</City>
+        <State>TX</State>
+        <Country>USA</Country>
+        <Latitude>32.41132</Latitude>
+        <Longitude>-99.68190</Longitude>
+    </Airport>
+</Airports>

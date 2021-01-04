@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+<xs:element name="Flights">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="Flight" type="flightDetails" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:complexType name="flightDetails">
+    <xs:sequence>
+        <xs:element name="year" type="Year" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="month" type="Month" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="day" type="Day" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="airline" type="airline" minOccurs="1" maxOccurs="1" />
+        <xs:element name="flight_Number" type="xs:positiveInteger" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="tail_Number" type="xs:string" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="origin_Airport" type="xs:string" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="destination_Country" type="xs:string" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+
+</xs:complexType>
+
+    <xs:simpleType name="Year">
+        <xs:restriction base="xs:gYear">
+            <xs:minInclusive value="2015"/>
+            <xs:maxInclusive value="2015"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Month">
+        <xs:restriction base="xs:gMonth">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Day">
+        <xs:restriction base="xs:gDay">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="airline">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="UA"/>
+            <xs:enumeration value="AA"/>
+            <xs:enumeration value="US"/>
+            <xs:enumeration value="F9"/>
+            <xs:enumeration value="B6"/>
+            <xs:enumeration value="OO"/>
+            <xs:enumeration value="AS"/>
+            <xs:enumeration value="NK"/>
+            <xs:enumeration value="WN"/>
+            <xs:enumeration value="DL"/>
+            <xs:enumeration value="EV"/>
+            <xs:enumeration value="HA"/>
+            <xs:enumeration value="MQ"/>
+            <xs:enumeration value="VX"/>
+            <xs:whiteSpace value="collapse"/>
+            <xs:length value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

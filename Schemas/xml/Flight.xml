@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Flights xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Flight.xsd">
+    <Flight>
+        <year>2015</year>
+        <month>--01</month>
+        <day>---01</day>
+        <airline>AS</airline>
+        <flight_Number>98</flight_Number>
+        <tail_Number>N407AS</tail_Number>
+        <origin_Airport>ANC</origin_Airport>
+        <destination_Country>Ghana</destination_Country>
+    </Flight>
+</Flights>

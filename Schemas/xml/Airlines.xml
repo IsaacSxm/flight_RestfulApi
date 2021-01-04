@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Airlines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Airlines.xsd">
+    <Airline>
+        <Airline_id>UA</Airline_id>
+        <Airline>United Air Lines Inc.</Airline>
+    </Airline>
+    <Airline>
+        <Airline_id>AA</Airline_id>
+        <Airline>American Airlines Inc.</Airline>
+    </Airline>
+    <Airline>
+        <Airline_id>AWSDE</Airline_id>
+        <Airline>Ney York Airline</Airline>
+    </Airline>
+</Airlines>

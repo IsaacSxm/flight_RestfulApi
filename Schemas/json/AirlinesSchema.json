@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://flightApi.com/airlines",
+  "title": "Airline Details",
+  "description": "This schema gives some basic details about an airline",
+  "type": "object",
+  "properties": {
+    "airline_id": {
+      "description": "This is a unique identifier for the name of the airline",
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 2
+    },
+    "airline": {
+      "description": "This is the name of the airline",
+      "type": "string"
+    }
+  },
+  "required": ["airline_id","airline"]
+}

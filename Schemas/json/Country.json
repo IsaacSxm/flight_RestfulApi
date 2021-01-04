@@ -1,0 +1,5 @@
+{
+  "$schema": "CountrySchema.json",
+  "Country": "Netherlands",
+  "AverageTemp": -2
+}

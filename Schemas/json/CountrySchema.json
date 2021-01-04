@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://flightApi.com/Country",
+  "title": "Countries and Average Temp.",
+  "description": "This schema describes a country and its yearly average temperature in degree celcius.",
+  "type": "object",
+  "properties": {
+    "Country": {
+      "description": "Name of country",
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 56
+    },
+    "AverageTemp": {
+      "description": "Average yearly temperature in degree Celsius",
+      "type": "number",
+      "minimum": -25,
+      "maximum": 50
+    }
+  },
+  "required": ["Country","AverageTemp"]
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "FlightsSchema.json",
+  "year": 2015,
+  "month": 1,
+  "day": 3,
+  "Airline": "AS",
+  "Flight_number": 2013,
+  "Origin_airport": "ANC",
+  "Destination_country": "Ghana"
+}

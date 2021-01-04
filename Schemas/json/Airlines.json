@@ -1,0 +1,5 @@
+{
+  "$schema": "AirlinesSchema.json",
+  "airline_id": "UA",
+  "airline": "United Air Lines Inc."
+}

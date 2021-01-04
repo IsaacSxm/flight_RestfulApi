@@ -1,0 +1,8 @@
+{
+  "$schema": "AirportsSchema.json",
+  "airport_id": "ABE",
+  "airport_name": "Lehigh Valley International Airport",
+  "city": "Allentown",
+  "state": "PA",
+  "country": "USA"
+}

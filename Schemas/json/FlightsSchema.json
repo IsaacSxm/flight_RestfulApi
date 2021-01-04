@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://flightApi.com/flights",
+  "title": "Flight Details",
+  "description": "This highlights some basic details about a particular flight",
+  "type": "object",
+  "properties": {
+    "year": {
+      "description": "This is a unique identifier for the name of the airline",
+      "type": "integer",
+      "default": 2015
+    },
+    "month": {
+      "description": "This is the name of the airline",
+      "type": "integer",
+      "minimum":1,
+      "maximum": 12
+    },
+    "day": {
+      "description": "Day of particular flight",
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 31
+    },
+    "Airline": {
+      "description": "This is the airline identifier.",
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 2
+
+    },
+    "Flight_number": {
+      "description": "Flight number.",
+      "type": "integer",
+      "minLength": 3,
+      "maxLength": 4
+    },
+    "Tail_number": {
+      "description": "This represents the tail number.",
+      "type": "string",
+      "minLength": 6,
+      "maxLength": 6
+    },
+    "Origin_airport": {
+      "description": "This shows the airport code name of where the flight departed",
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 3
+    },
+    "Destination_country": {
+      "description": "This shows the destination country of the flight",
+      "type": "string"
+    }
+  },
+  "required": ["year", "month", "day", "Airline", "Flight_number", "Origin_airport", "Destination_country"]
+
+}
