@@ -28,15 +28,11 @@ class Airlines(Resource):
 class Updates(Resource):
     def put(self, AIRLINE_ID):
         conn = db_connect.connect()
-        # airline_Id = request.json['AIRLINE_ID']
-        # airline = request.json['AIRLINE']
-        query = "UPDATE airlines SET airline=%s WHERE airline_id =%s"
-        data = (_airline, _airline_Id)
-        # %str(airline_Id).format(airline))
-        conn.execute(query, data)
+        airline = request.json['AIRLINE']
+        query = "UPDATE airlines SET airline='{1}' WHERE airline_id ='{0}'".format(AIRLINE_ID, airline)
+        conn.execute(query)
         return {"Good" : 'success'}
 
-        # TODO: make sure to fix  Updates
 
 class Delete(Resource):
     def delete(self, AIRLINE_ID):

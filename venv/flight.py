@@ -21,15 +21,11 @@ def output_xml(data, code, headers=None):
 	resp.headers.extend(headers or {})
 	return resp
 
-# @app.route('/delete/<String:AIRLINE_ID>')
-# def delete_airline(AIRLINE_ID):
-#     conn = db_connect.connect()
-#     query = conn.execute("DELETE FROM airlines WHERE airline_id=%s ", (airline_id,))
-#     return "Success"
-api.add_resource(Rest.Delete, '/delete/<AIRLINE_ID>')
-api.add_resource(Rest.Updates, '/update')
-api.add_resource(Rest.Airlines, '/airlines')
-api.add_resource(Rest.Airports, '/airports')
+
+api.add_resource(Rest.Delete, '/delete/<AIRLINE_ID>') #route to delete based on airline id
+api.add_resource(Rest.Updates, '/update/<AIRLINE_ID>') #route to update based on airline id
+api.add_resource(Rest.Airlines, '/airlines') #route to select everything from airlines
+api.add_resource(Rest.Airports, '/airports') #route to select everything from airports
 api.add_resource(Rest.Greet, '/')
 
 
