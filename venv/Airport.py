@@ -51,7 +51,7 @@ class Airports(Resource):
     def get(self):
         conn = db_connect.connect()
         query = conn.execute("SELECT airport_id, airport_name, city, country, latitude, longitude FROM airports;")
-        result = {'Airports': [dict(zip(tuple(query.keys()), i)) for i in query.cursor]}
+        result = {'Airport': [dict(zip(tuple(query.keys()), i)) for i in query.cursor]}
         return result
 
     @expects_json(schema)

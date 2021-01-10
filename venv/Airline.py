@@ -1,10 +1,18 @@
 from flask import request, Response
+import requests
 from flask_restful import Resource, Api, Resource, fields
 from sqlalchemy import create_engine
 from flask_jsonpify import jsonify
 from http import HTTPStatus
 from flask_expects_json import expects_json
+# import urllib
 import xml.etree.ElementTree as ET
+from urllib.request import urlopen
+from xml.etree.ElementTree import parse
+import xmltodict
+
+
+
 
 db_connect = create_engine('sqlite:///C:/sqlite3/Flights_db.db')
 
@@ -32,15 +40,16 @@ class Greet(Resource):
 class Airlines(Resource):
     def get(self):
         conn = db_connect.connect()
-        try:
-            query = conn.execute("SELECT * FROM airlines;")
-            result = {'Airlines': [dict(zip(tuple(query.keys()), i)) for i in query.cursor]}
-            return result
-        except Exception as e:
-            return {'Error' : 'Could not perform GET request'}
+        # if "application/xml" in request.headers["Content-Type"]:
+        query = conn.execute("SELECT * FROM airlines;")
+        result = {'Airline': [dict(zip(tuple(query.keys()), i)) for i in query.cursor]}
+        return result
+        # except Exception as e:
+        #     return {'Error' : 'Could not perform GET request'}
 
 
     # @expects_json(schema)
+    @property
     def post(self):
         conn = db_connect.connect()
         if "application/json" in request.headers["Content-Type"]:
@@ -48,15 +57,17 @@ class Airlines(Resource):
             airline_Id = request.json['airline_id']
             airline = request.json['airline']
             query = conn.execute("insert into airlines values('{0}', '{1}')".format(airline_Id, airline))
-            return {'status': 'success'}
-
-        # elif "application/xml" in request.xml["Content-Type"]:
+            #return {'status': 'success'}
 
 
-
-
-        # except Exception as e:
-        #     return {'Error' : "Could not perform POST"}
+        else:
+            xml_data = request.data
+            content_xml = xmltodict.parse(xml_data)
+            for content in content_xml:
+                airline_Id = content_xml['Airline']['AIRLINE_ID']
+                airline = content_xml['Airline']['AIRLINE']
+                query = conn.execute("insert into airlines values('{0}', '{1}')".format(airline_Id, airline))
+            return {'XML' : 'Success'}
 
 
 class Updates(Resource):
