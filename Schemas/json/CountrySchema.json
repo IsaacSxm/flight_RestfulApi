@@ -9,7 +9,7 @@
       "description": "Name of country",
       "type": "string",
       "minLength": 3,
-      "maxLength": 56
+      "maxLength": 100
     },
     "AverageTemp": {
       "description": "Average yearly temperature in degree Celsius",

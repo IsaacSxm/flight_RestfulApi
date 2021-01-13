@@ -5,3 +5,4 @@ Flask-RESTful==0.3.8
 flask-jsonschema-validator #not using this now. Tried didnt work.
 flask-expects-json
 xmltodict
+urllib
