@@ -16,14 +16,14 @@ schema = {
               "minLength": 3,
               "maxLength": 100
             },
-            "AverageTemp": {
+            "AvgTempCelsius": {
               "description": "Average yearly temperature in degree Celsius",
               "type": "number",
               "minimum": -25,
               "maximum": 50
             }
           },
-          "required": ["Country","AverageTemp"]
+          "required": ["Country","AvgTempCelsius"]
 }
 
 class GetAndPost(Resource):
@@ -44,12 +44,12 @@ class GetAndPost(Resource):
                 @expects_json(schema)
                 def post_(self):
                     for content in request.json:
-                        country = request.json['']
-                        avgTempCelsius = request.json['']
+                        country = request.json['Country']
+                        avgTempCelsius = request.json['AvgTempCelsius']
                         query = conn.execute("insert into CountryAndAvgTemp values('{0}', '{1}')".format(country, avgTempCelsius))
-                        return {"Success" : "JSON content posted successfully"}
+                        return {"Success": "JSON content POST successfull"}
                 post_(self)
-                return {"Success": "JSON content posted successfully"}
+                return {"Success": "JSON content POST successfull"}
             except requests.exceptions.HTTPError as e:
                 return SystemError(e)
 
@@ -58,8 +58,8 @@ class GetAndPost(Resource):
                 xml_data = request.data
                 content_xml = xmltodict.parse(xml_data)
                 for content in content_xml:
-                    country = content_xml['Countries']['Country']
-                    avgTempCelsius = content_xml['Countries']['AvgTempCelsius']
+                    country = content_xml['Countries']['Country']['Country']
+                    avgTempCelsius = content_xml['Countries']['Country']['AvgTempCelsius']
                     query = conn.execute("INSERT INTO CountryAndAvgTemp values ('{0}', '{1}')".format(country, avgTempCelsius))
                 return {'Success': 'POST xml content-type successful'}
             except requests.exceptions.HTTPError as e:
@@ -67,7 +67,7 @@ class GetAndPost(Resource):
 
 class UpdateCountry(Resource):
     def put(self, Country):
-        conn = db_connect()
+        conn = db_connect.connect()
         if "application/json" in request.headers["Content-Type"]:
             try:
                 @expects_json(schema)
@@ -75,7 +75,8 @@ class UpdateCountry(Resource):
                     for content in request.json:
                         avgTempCelsius = request.json['AvgTempCelsius']
                         query = conn.execute("UPDATE CountryAndAvgTemp SET avgTempCelsius='{1}' WHERE country='{0}')".format(Country, avgTempCelsius))
-                    return {'Success' : 'JSON content-type POST successful'}
+                put_(self)
+                return {'Success' : 'JSON content-type POST successful'}
             except requests.exceptions.HTTPError as e:
                 return SystemError(e)
 
@@ -84,8 +85,9 @@ class UpdateCountry(Resource):
                 xml_data = request.data
                 content_xml = xmltodict.parse(xml_data)
                 for content in content_xml:
-                    avgTempCelsius = content_xml['Countries']['AvgTempCelsius']
-                    query = conn.execute("UPDATE CountryAndAvgTemp SET avgTempCelsius='{1}' WHERE country='{0}')".format(Country, avgTempCelsius))
+                    avgTempCelsius = content_xml['Countries']['Country']['AvgTempCelsius']
+                    query = "UPDATE CountryAndAvgTemp SET avgTempCelsius='{1}' WHERE country='{0}'".format(Country, avgTempCelsius)
+                    conn.execute(query)
                 return {'Success': 'XML content-type UPDATE successful'}
             except requests.exceptions.HTTPError as e:
                 return SystemError(e)

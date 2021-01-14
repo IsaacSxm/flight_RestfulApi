@@ -50,7 +50,7 @@ class Airlines(Resource):
                         airline_Id = request.json['airline_id']
                         airline = request.json['airline']
                         query = conn.execute("insert into airlines values('{0}', '{1}')".format(airline_Id, airline))
-                        return {"Success" : "JSON content posted successfully"}
+                        return {"Success": "JSON content POST successful"}
                 post_(self)
                 return {"Success": "JSON content POST successful"}
             except requests.exceptions.HTTPError as e:
@@ -81,9 +81,9 @@ class UpdateAirline(Resource):
                         airline = request.json['airline']
                         query = "UPDATE airlines SET airline='{1}' WHERE airline_id ='{0}'".format(AIRLINE_ID, airline)
                         conn.execute(query)
-                        # return {"Good": 'success'}
+                        return {""}
                 put_(self)
-                return {"Success": 'JSON content-type POST successful'}
+                return {"Success": 'JSON content-type PUT/UPDATE successful'}
             except requests.exceptions.HTTPError as e:
                 raise SystemExit(e)
 

@@ -1,6 +1,7 @@
 import Airline
 import Airport
 import Country
+import flight
 import json
 from simplexml import dumps
 from flask import Flask, jsonify, request, make_response
@@ -15,6 +16,7 @@ api = Api(app)
 apiAirlines = Api(app)
 apiAirports = Api(app)
 apiCountry = Api(app)
+apiFlight = Api(app)
 
 @api.representation('application/json')
 def output_json(data, code, headers=None):
@@ -41,21 +43,32 @@ def output_xml(data, code, headers=None):
     resp.headers.extend(headers or {})
     return resp
 
+@apiFlight.representation('application/xml')
+def output_xml(data, code, headers=None):
+	resp = make_response(dumps({'Flights':data}), code)
+	resp.headers.extend(headers or {})
+	return resp
+
 
 api.add_resource(Airline.Greet, '/')
-apiAirlines.add_resource(Airline.Airlines, '/airlines') #route to SELECT/POST everything from airlines
-api.add_resource(Airline.DeleteAirline, '/airlines/delete/<AIRLINE_ID>') #route to DELETE based on airline id
-api.add_resource(Airline.UpdateAirline, '/airlines/update/<AIRLINE_ID>') #route to UPDATE based on airline id
+apiAirlines.add_resource(Airline.Airlines, '/airlines') 	#route to SELECT/POST everything from airlines
+api.add_resource(Airline.DeleteAirline, '/airlines/delete/<AIRLINE_ID>') 	#route to DELETE airline
+api.add_resource(Airline.UpdateAirline, '/airlines/update/<AIRLINE_ID>') 	#route to UPDATE airline
 
 
-apiAirports.add_resource(Airport.Airports, '/airports') #route to SELECT/POST everything from airports
-api.add_resource(Airport.DeleteAirport, '/airports/delete/<AIRPORT_ID>') #route to DELETE based on airport id
-api.add_resource(Airport.UpdateAirport, '/airports/update/<AIRPORT_ID>') #route to UPDATE based on airport id
+apiAirports.add_resource(Airport.Airports, '/airports') 	#route to SELECT/POST everything from airports
+api.add_resource(Airport.DeleteAirport, '/airports/delete/<AIRPORT_ID>') #route to DELETE airport
+api.add_resource(Airport.UpdateAirport, '/airports/update/<AIRPORT_ID>') #route to UPDATE airport
 
 
-apiCountry.add_resource(Country.GetAndPost, '/countries') #route to SELECT/POST everything from airports
-api.add_resource(Country.DeleteCountry, '/countries/delete/<Country>')
-api.add_resource(Country.UpdateCountry, '/countries/update/<Country>')
+apiCountry.add_resource(Country.GetAndPost, '/countries') 	#route to SELECT/POST everything from airports
+api.add_resource(Country.DeleteCountry, '/countries/delete/<Country>')		#route to DELETE country
+api.add_resource(Country.UpdateCountry, '/countries/update/<Country>')		#route to UPDATE country
+
+
+apiFlight.add_resource(flight.Flight, '/flights')	#route to SELECT/POST everything from flight
+api.add_resource(flight.DeleteFlight, '/flights/delete/<FLIGHT_NUMBER>')	#route to DELETE flight
+api.add_resource(flight.UpdateFlight, '/flights/update/<FLIGHT_NUMBER>')	#route to UPDATE flight
 
 if __name__ == '__main__':
     app.run()
