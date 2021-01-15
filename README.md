@@ -10,7 +10,7 @@ Database software used : DB Browser for SQLite
 
 This Repo includes database used for API as well as  testData file, schemas.  
 
-![pip install](images\pip install.png)
+![pip install](images/pip install.png)
 
 Pull this repository and open in PyCharm.
 
