@@ -47,12 +47,25 @@ schema = {
         "required": ["airport_id","airport_name", "city", "state", "country", "latitude", "longitude"]
 }
 
+class AirportsSelect(Resource):
+    def get(self, AIRPORT_ID):
+        conn = db_connect.connect()
+        try:
+            query = conn.execute("SELECT * FROM airports WHERE airport_id = '{0}'".format(AIRPORT_ID))
+            result = {'Airport': [dict(zip(tuple(query.keys()), i)) for i in query.cursor]}
+            return result
+        except Exception as e:
+            return {'Error': 'Could not perform GET request'}
+
 class Airports(Resource):
     def get(self):
         conn = db_connect.connect()
-        query = conn.execute("SELECT * FROM airports;")
-        result = {'Airport': [dict(zip(tuple(query.keys()), i)) for i in query.cursor]}
-        return result
+        try:
+            query = conn.execute("SELECT * FROM airports;")
+            result = {'Airport': [dict(zip(tuple(query.keys()), i)) for i in query.cursor]}
+            return result
+        except Exception as e:
+            return {'Error': 'Could not perform GET request'}
 
 
     def post(self):

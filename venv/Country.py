@@ -26,6 +26,16 @@ schema = {
           "required": ["Country","AvgTempCelsius"]
 }
 
+class CountrySelect(Resource):
+    def get(self, Country):
+        conn = db_connect.connect()
+        try:
+            query = conn.execute("SELECT * FROM CountryAndAvgTemp WHERE country='{0}'".format(Country))
+            result = {'Country': [dict(zip(tuple(query.keys()), i)) for i in query.cursor]}
+            return result
+        except requests.exceptions.HTTPError as e:
+            return SystemError(e)
+
 class GetAndPost(Resource):
     def get(self):
         conn = db_connect.connect()

@@ -60,6 +60,17 @@ schema = {
           "required": ["year", "month", "day", "Airline", "Flight_number", "Origin_airport", "Destination_country"]
 }
 
+class flightSelect(Resource):
+    def get(self, FLIGHT_NUMBER):
+        conn = db_connect.connect()
+        try:
+            query = conn.execute("SELECT * FROM flights WHERE flight_number='{0}'".format(FLIGHT_NUMBER))
+            result = {'Flight': [dict(zip(tuple(query.keys()), i)) for i in query.cursor]}
+            return result
+        except requests.exceptions.HTTPError as e:
+            return SystemError(e)
+
+
 class Flight(Resource):
     def get(self):
         conn = db_connect.connect()
@@ -74,22 +85,22 @@ class Flight(Resource):
       conn = db_connect.connect()
       if "application/json" in request.headers["Content-Type"]:
         try:
-          @expects_json(schema)
-          def post_(self):
-              for content in request.json:
-                  year = request.json['YEAR']
-                  month = request.json['MONTH']
-                  day = request.json['DAY']
-                  day_of_week = request.json['DAY_OF_WEEK']
-                  airline = request.json['AIRLINE']
-                  flight_number = request.json['FLIGHT_NUMBER']
-                  tail_number = request.json['TAIL_NUMBER']
-                  origin_airport = request.json['ORIGIN_AIRPORT']
-                  destination_country = request.json['DESTINATION_COUNTRY']
-                  query = conn.execute("INSERT INTO flights values('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}')".format(year, month, day, day_of_week, airline, flight_number, tail_number, origin_airport, destination_country))
-                  return {"Success": "JSON content POST successful"}
-              post_(self)
-              return {"Success": "JSON content POST successful"}
+            @expects_json(schema)
+            def post_(self):
+                  for content in request.json:
+                      year = request.json['YEAR']
+                      month = request.json['MONTH']
+                      day = request.json['DAY']
+                      day_of_week = request.json['DAY_OF_WEEK']
+                      airline = request.json['AIRLINE']
+                      flight_number = request.json['FLIGHT_NUMBER']
+                      tail_number = request.json['TAIL_NUMBER']
+                      origin_airport = request.json['ORIGIN_AIRPORT']
+                      destination_country = request.json['DESTINATION_COUNTRY']
+                      query = conn.execute("INSERT INTO flights values('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}')".format(year, month, day, day_of_week, airline, flight_number, tail_number, origin_airport, destination_country))
+                      return {"Success": "JSON content POST successful"}
+            post_(self)
+            return {"Success": "JSON content POST successful"}
         except requests.exceptions.HTTPError as e:
           return SystemError(e)
 
@@ -158,7 +169,7 @@ class UpdateFlight(Resource):
 
 class DeleteFlight(Resource):
   def delete(self, FLIGHT_NUMBER):
-    conn - db_connect.connect()
+    conn = db_connect.connect()
     try:
       query = conn.execute("DELETE FROM flights WHERE FLIGHT_NUMBER='{0}'".format(FLIGHT_NUMBER))
       return {"Status" : 'Deleted successfully!!'}

@@ -4,9 +4,14 @@ from flask_restful import Resource, Api, Resource
 from sqlalchemy import create_engine
 from flask_expects_json import expects_json
 import xmltodict
+# import xmlschema
+# import xml.etree.ElementTree as ET
+# # from lxml import etree
+# # from io import StringIO, BytesIO
 
 
 db_connect = create_engine('sqlite:///C:/sqlite3/Flights_db.db')
+# my_schema = xmlschema.XMLSchema('airline.xsd')
 
 schema = {
          "type": "object",
@@ -28,6 +33,17 @@ schema = {
 class Greet(Resource):
     def get(self):
         return {'message': 'Hello, Welcome to flight restful API. XML and JSON headers.'}
+
+class AirlinesSelect(Resource):
+    def get(self, AIRLINE_ID):
+        conn = db_connect.connect()
+        try:
+            query = conn.execute("SELECT * FROM airlines WHERE airline_id='{0}'".format(AIRLINE_ID))
+            result = {'Airline': [dict(zip(tuple(query.keys()), i)) for i in query.cursor]}
+            return result
+        except Exception as e:
+            return {'Error': 'Could not perform GET request'}
+
 
 class Airlines(Resource):
     def get(self):

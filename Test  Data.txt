@@ -1,0 +1,85 @@
+*************************************AIRLINES.***************************************
+---------JSON test data--------
+{
+    "airline_id": "IS",
+    "airline": "Isaac Space"
+}
+
+--------XML test data---------
+<?xml version="1.0" encoding="UTF-8"?>
+<Airline>
+    <AIRLINE_ID>XY</AIRLINE_ID>
+    <AIRLINE>TestAir Int.</AIRLINE>
+</Airline>
+
+
+**********************************Countries.****************************************
+-------JSON test data----------
+{
+    "Country": "SCAN",
+    "AvgTempCelsius": 28.29
+}
+
+-----XML test data-----------
+<Countries>
+    <Country>
+        <Country>COAH</Country>
+        <AvgTempCelsius>28.29</AvgTempCelsius>
+    </Country>
+</Countries>
+
+
+**********************************Flights**************************************.
+--------XML test data----------------
+<?xml version="1.0" ?>
+<Flights>
+    <Flight>
+        <YEAR>2019</YEAR>
+        <MONTH>1</MONTH>
+        <DAY>1</DAY>
+        <DAY_OF_WEEK>4</DAY_OF_WEEK>
+        <AIRLINE>AS</AIRLINE>
+        <FLIGHT_NUMBER>7777</FLIGHT_NUMBER>
+        <TAIL_NUMBER>N407AS</TAIL_NUMBER>
+        <ORIGIN_AIRPORT>ANC</ORIGIN_AIRPORT>
+        <DESTINATION_COUNTRY>Burkina Faso</DESTINATION_COUNTRY>
+    </Flight>
+</Flights>
+
+---------------JSON test data----------------
+{
+    "YEAR": 2015,
+    "MONTH": 1,
+    "DAY": 1,
+    "DAY_OF_WEEK": 4,
+    "AIRLINE": "IS",
+    "FLIGHT_NUMBER": 333,
+    "TAIL_NUMBER": "N407AS",
+    "ORIGIN_AIRPORT": "ANC",
+    "DESTINATION_COUNTRY": "Burkina Faso"
+ }
+
+
+***********************************Airports.*************************************
+------------------JSON test data----------------------
+{
+    "airport_id": "AIS",
+    "airport_name": "Pass OSCP Airport",
+    "city": "Allentown",
+    "state": "GA",
+    "country": "USA",
+    "latitude": 40.65236,
+    "longitude": -75.44040
+}
+------------XML test data----------------------------------
+<Airports>
+    <Airport>
+        <AIRPORT_ID>IIS</AIRPORT_ID>
+        <AIRPORT_NAME>PAASS OSCP Air</AIRPORT_NAME>
+        <CITY>Allentown</CITY>
+        <STATE>CP</STATE>
+        <COUNTRY>USA</COUNTRY>
+        <LATITUDE>40.65236</LATITUDE>
+        <LONGITUDE>-75.44040</LONGITUDE>
+    </Airport>
+</Airports>
