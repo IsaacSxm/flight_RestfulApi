@@ -1,7 +1,7 @@
 # flight_RestfulApi
  Database driven RESTFUl API in python
 
-Programming language : Python
+Programming language : Python 3
 
 Required IDE : PyCharm
 
