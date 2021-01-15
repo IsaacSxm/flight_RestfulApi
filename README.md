@@ -2,12 +2,15 @@
  Database driven RESTFUl API in python
 
 Programming language : Python
+
 Required IDE : PyCharm
+
 Database software used : DB Browser for SQLite
+
 
 This Repo includes database used for API as well as  testData file, schemas.  
 
-![pip install](C:\Users\rhyme\PycharmProjects\flight_RestfulApi\images\pip install.png)
+![pip install](images\pip install.png)
 
 Pull this repository and open in PyCharm.
 
