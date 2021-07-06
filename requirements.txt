@@ -5,4 +5,5 @@ flask-jsonpify
 flask-expects-json
 xmltodict
 xmlschema
-
+pandas
+matplotlib

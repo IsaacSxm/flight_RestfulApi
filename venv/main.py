@@ -4,7 +4,7 @@ import Country
 import flight
 import json
 from simplexml import dumps
-from flask import Flask, jsonify, request, make_response
+from flask import Flask, render_template, jsonify, request, make_response
 from flask import Response, Flask
 from flask_restful import Resource, Api, Resource, fields
 from flask_expects_json import expects_json
@@ -49,7 +49,11 @@ def output_xml(data, code, headers=None):
 	return resp
 
 
-api.add_resource(Airline.Greet, '/')
+@app.route('/')
+def index():
+	return render_template('index.html')
+
+# api.add_resource(Airline.Greet, '/')
 apiAirlines.add_resource(Airline.AirlinesSelect, '/airlines/<AIRLINE_ID>')
 apiAirlines.add_resource(Airline.Airlines, '/airlines') 	#route to SELECT/POST everything from airlines
 api.add_resource(Airline.DeleteAirline, '/airlines/delete/<AIRLINE_ID>') 	#route to DELETE airline
