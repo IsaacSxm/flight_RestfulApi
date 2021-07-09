@@ -12,7 +12,7 @@ from flask_restful import Resource, Api, Resource, fields
 from flask_expects_json import expects_json
 from sqlalchemy import create_engine
 
-#Change this path
+#Change path to 'sqlite:///../sqlite3/Flights_db.db' or '/path/to/database.db'
 db_connect = create_engine('sqlite:///C:/sqlite3/Flights_db.db')
 
 app = Flask(__name__)
@@ -62,7 +62,6 @@ def index():
 	plots = df.plot.bar(x="AIRLINE", y="AvgTempCelsius" )
 	fig = plots.figure
 	fig.savefig('static/my_plot.png')
-	plt.show()
 	return render_template('index.html')
 
 

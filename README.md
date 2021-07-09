@@ -5,11 +5,17 @@ Programming language : Python 3
 
 Required IDE : PyCharm
 
+Python interpreter used: Python 3.8
+
+- See "images/python interpreter".png file for details if necessary.
+
 Database software used : DB Browser for SQLite
+
+- Locate database in "sqlite3/Flights_db.db"
 
 This Repo includes database used for API as well as  testData file, schemas.  
 
-**Take note : My path to the SQLite database in my code (main.py) might be different from yours.** 
+**Take note : A python interpreter might be needed to set. Also path to the SQLite database in my code (main.py) might be different from yours. A path change might be necessary.**
 
 ![pip install](images/pip install.png)
 
