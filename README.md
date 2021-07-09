@@ -7,8 +7,9 @@ Required IDE : PyCharm
 
 Database software used : DB Browser for SQLite
 
-
 This Repo includes database used for API as well as  testData file, schemas.  
+
+**Take note : My path to the SQLite database in my code (main.py) might be different from yours.** 
 
 ![pip install](images/pip install.png)
 

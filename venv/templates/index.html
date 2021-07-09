@@ -9,21 +9,21 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <a class="navbar-brand" href="{{ url_for('index')}}">Flight</a>
+        <a class="navbar-brand" href="{{ url_for('index')}}">Flight API Visualization</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">About</a>
-            </li>
             </ul>
         </div>
     </nav>
     <div class="container">
         <h1>Welcome to Flight details hub.</h1>
-        {% show %}
+        <p>The data visualised shows that countries with favourable average temperatures (i.e. 15 degrees celcius and above.) have more flights coming into
+        the country compared to countries with less favourable average temperatures (i.e. 15 degrees celcius and below).</p>
+        <p>In summary, average temperatures influenced flights from USA and their destination countries in the year 2015.</p>
+        <img src="../static/my_plot.png">
     </div>
 
 </body>

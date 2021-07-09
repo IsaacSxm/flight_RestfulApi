@@ -7,3 +7,4 @@ xmltodict
 xmlschema
 pandas
 matplotlib
+mpld3
