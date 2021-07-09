@@ -3,12 +3,16 @@ import Airport
 import Country
 import flight
 import json
+import pandas
+import matplotlib.pyplot as plt
 from simplexml import dumps
 from flask import Flask, render_template, jsonify, request, make_response
 from flask import Response, Flask
 from flask_restful import Resource, Api, Resource, fields
 from flask_expects_json import expects_json
+from sqlalchemy import create_engine
 
+db_connect = create_engine('sqlite:///C:/sqlite3/Flights_db.db')
 
 app = Flask(__name__)
 api = Api(app)
@@ -51,7 +55,11 @@ def output_xml(data, code, headers=None):
 
 @app.route('/')
 def index():
-	return render_template('index.html')
+	df = pandas.read_sql("SELECT AIRLINE, AvgTempCelsius, COUNT(AIRLINE) FROM flights INNER JOIN CountryAndAvgTemp ON CountryAndAvgTemp.DESTINATION_COUNTRY = flights.DESTINATION_COUNTRY GROUP BY AvgTempCelsius having count(AIRLINE) > 1", db_connect)
+	df.AvgTempCelsius= pandas.to_numeric(df.AvgTempCelsius)
+	df.plot.bar(x="AIRLINE", y="AvgTempCelsius" )
+	show = plt.show()
+	return render_template('index.html', show=show)
 
 # api.add_resource(Airline.Greet, '/')
 apiAirlines.add_resource(Airline.AirlinesSelect, '/airlines/<AIRLINE_ID>')
